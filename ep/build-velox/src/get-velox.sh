@@ -17,7 +17,7 @@
 set -exu
 
 CURRENT_DIR=$(cd "$(dirname "$BASH_SOURCE")"; pwd)
-VELOX_REPO=https://github.com/vardaram-zetta/velox
+VELOX_REPO=https://github.com/vardaram-zetta/velox.git
 VELOX_BRANCH=bloom_exp
 VELOX_ENHANCED_BRANCH=bloom_exp
 VELOX_HOME=""
