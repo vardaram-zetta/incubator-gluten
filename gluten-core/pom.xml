@@ -150,9 +150,7 @@
       <resource>
         <directory>${project.basedir}/src/main/resources</directory>
       </resource>
-      <resource>
-        <directory>${project.build.directory}/generated-resources</directory>
-      </resource>
+      <!-- Note: generated-resources is no longer needed since build-info is written directly to output directory -->
     </resources>
     <plugins>
       <!-- compile proto buffer files using copied protoc binary -->
@@ -188,7 +186,9 @@
             <phase>prepare-package</phase>
             <configuration>
               <target>
+                <!-- Write directly to output directory so build-info is on classpath immediately -->
                 <exec executable="bash" osfamily="unix">
+                  <env key="GLUTEN_BUILD_INFO_OUTPUT_DIR" value="${project.build.outputDirectory}"/>
                   <arg value="${project.basedir}/../dev/gluten-build-info.sh"/>
                   <arg value="true"/>
                   <arg value="--version"/>

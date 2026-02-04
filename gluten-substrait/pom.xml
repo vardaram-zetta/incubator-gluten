@@ -228,7 +228,9 @@
             <phase>prepare-package</phase>
             <configuration>
               <target>
+                <!-- Write directly to gluten-core output directory so build-info is on classpath immediately -->
                 <exec executable="bash" osfamily="unix">
+                  <env key="GLUTEN_BUILD_INFO_OUTPUT_DIR" value="${project.basedir}/../gluten-core/target/scala-${scala.binary.version}/classes"/>
                   <arg value="${project.basedir}/../dev/gluten-build-info.sh"/>
                   <arg value="false"/>
                   <arg value="--backend"/>

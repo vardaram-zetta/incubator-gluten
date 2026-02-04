@@ -19,7 +19,8 @@
 
 GLUTEN_ROOT=$(cd $(dirname -- $0)/..; pwd -P)
 
-EXTRA_RESOURCE_DIR=$GLUTEN_ROOT/gluten-core/target/generated-resources
+# Default output directory, can be overridden by --output-dir parameter
+EXTRA_RESOURCE_DIR=${GLUTEN_BUILD_INFO_OUTPUT_DIR:-$GLUTEN_ROOT/gluten-core/target/generated-resources}
 BUILD_INFO="$EXTRA_RESOURCE_DIR"/gluten-build-info.properties
 DO_REMOVAL="$1" && shift
 if [ "true" = "$DO_REMOVAL" ]; then
